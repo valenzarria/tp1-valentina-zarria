@@ -1,85 +1,102 @@
-# Hola mundo
-## hola mundo
-### hola mundo
-#### hola mundo
-##### hola mundo
-###### hola mundo
-###### hola mundo
+# TP1
 
-**hola**
-<b> hola </b>
+## Uso de puertos de entrada y salida. 
 
+Utilizando un Arduino Nano (`atmega328p`), `4 LEDs` y `4 Pulsadores` se pide:
 
-1. sadfsdf
-2. asdfqsdf
+1. Mediante el uso de un `pulsador` controle el estado de un `LED` de manera que si el pulsador elegido esta presionado entonces el LED elegido debe de estar encendido. De manera extensiva si el pulsador elegido NO esta presionado entonces el LED elegido debe de estar apagado. 
 
-- wefadfs
-- asdfsdf
-- asdfasdf
+2.  Hacer extensivo el funcionamiento a los cuatro pulsadores, de manera que se controlen a los cuatro LEDs mediante los cuatro PULSADORES. 
 
-1. dsafsdf
-2. - wedwedwde
-   - wewefwef
-   - wefwewef
-3. sdfwdfsd
+> Nota: Todos los pulsadores `deben` tener habilitada la resistencia de `pull-up`
 
-* wefwefw
-* wefwefew
+> Asi mismo los LEDs deben conectarse con su resistencia limitadora de corriente 2 asegurando no superar la corriente máxima que puede entregar el pin. Almenos de 330 Ohms
 
 
-<i> asafafa </i>
+## ¡USAR LOS PINES INDICADOS NO CAMBIARLOS!
 
-``` [c]
-int pepe = 99;
+``` C
+PD4 -> BOTON 1 
+PD5 -> BOTON 2 
+PD6 -> BOTON 3 
+PD7 -> BOTON 4
 
+
+PB0 -> LED 1 
+PB1 -> LED 2 
+PB2 -> LED 3 
+PB3 -> LED 4
 ```
 
-[Texto del enlace aquí](https://www.google.com)
 
+# INFORME:
+### Antes del main
+1. Empezamos el código definiendo cada `MACRO` para cada botón por ej: 
+### Como definí la macro para los botones 
+``` C
+#define boton1 ((PIND>>4)&0X01)
+#define boton2 ((PIND>>5)&0x01)
+#define boton3 ((PIND>>6)&0X01)
+#define boton4 ((PIND>>7)&0X01)
+```  
+2. después de definir cada botón, empezamos a hacer `MACROS` para los **<span style="color:red">LEDS</span>** en mí caso yo hice un macro general para todos los leds ej:
+### Macro general de los **<span style="color:red">LEDS</span>**
+``` C
+#define SET_PIN(PORT,PIN) (PORT|= 1<<PIN)
+#define CLEAR_PIN(PORT,PIN) (PORT&=~(1<<PIN))
+ ```
+ cuando ya terminamos de definir cada variable empezamos a escribir el codigo dentro del `"main"`
 
-link con referencia: En dicha [web][blog] recopilo artículos sobre todo lo relacionado con automatización, gestión y eficiencia.
+ 3. Dentro del main comenzamos a setear cada `PIN` como entrada y como salida dependiendo del el pin en el que se encuentren los **<span style="color:red">LEDS</span>** y los `BOTONES`, *como los pines de los botones y leds son consecutivos definimos cada salida y cada entrada de forma general.
+ ### Como declaré los pines
+``` C
+DDRD &=0x0f;
+DDRB |=0x0f;
+``` 
+4. Ahora empezamos escribiendo el **<span style="color:lightblue">While</span>** con intencion de que se `repita` el codigo cuando termine de ejecutarse todo y dentro de él vamos a hacer una pregunta <span style="color:lightgreen">-"Si el botón 1 está accionado encender el led numero 1 y si no mantenerlo apagado"</span> así con todos los botones.
+### Uso del **<span style="color:orange">"If"</span>** y **<span style="color:orange">"else"</span>** Dentro del While 
+``` C
+ while(1)
+  {
+   if (boton1==0)
+   {
+     SET_PIN(PORTB,0);
+   }
+  else
+   {
+     CLEAR_PIN(PORTB,0);
+   }
 
+   if (boton2==0)
+   {
+     SET_PIN(PORTB,1);
+   }
+  
+  else
+  {
+    CLEAR_PIN(PORTB,1);
+  }
+   if (boton3==0)
+   {
+     SET_PIN(PORTB,2);
+   }
+   else
+   {
+     CLEAR_PIN(PORTB,2);
+   }
 
-[blog]: http://limni.net/blog/
+   if (boton4==0)
+   {
+     SET_PIN(PORTB,3);
+   }
+   else
+   {
+     CLEAR_PIN(PORTB,3);
+   }
+   
+  }
 
-Link automatico
-<http://www.limni.net>
-
-
-| hola | sadsadas| 
-| :-:  | :-:     |
-| 1    | a       |  ||||||
-
-> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-
->> This is nested blockquote. 
-
-+   Red
-+   Green
-+   Blue
-
-
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
-
-## Mencionar personas y equipos
-
-Puedes mencionar a una persona o equipo en GitHub al escribir @ más el nombre de usuario o el nombre del equipo. This will trigger a notification and bring their attention to the conversation. Las personas también recibirán una notificación si editas un comentario para mencionar su nombre de usuario o el nombre del equipo. Para obtener más información acerca de las notificaciones, consulta la sección "Acerca de las notificaciones".
-
-@github/support ¿Qué piensas sobre estas actualizaciones?
-
-## Puedes agregar emojis a tu escritura al escribir :EMOJICODE:.
-
-:+1:  :smile: ver markdown emoji
-
- ---
-
-***
-
-- - - -
-
-Para escribir en color solo basta con usar comilla, por ejemplo `esto esta escrito en clor` 
-<span style="color:red">cardenales</span>
-<span style="color:red"></span>
-![Diagrama de Flujo](harri.jpg)
+  return 0;
+```
+# Diagrama de Flujo
+![Diagrama de Flujo](Diagrama_TP1.png "Diagrama")

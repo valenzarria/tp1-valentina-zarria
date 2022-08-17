@@ -30,4 +30,23 @@ PB3 -> LED 4
 
 
 # INFORME:
+- Este programa está diseñado para prender y apagar `4 leds` mediante `4 botones`.
 
+``` c
+#define bot1 ((PIND >> 4) & 0x01)
+#define bot2 ((PIND >> 5) & 0x01)
+#define bot3 ((PIND >> 6) & 0x01)
+#define bot4 ((PIND >> 7) & 0x01) 
+```
+- En esta seccion estoy definiendo un nombre para cada boton para hacer más rapida la escritura del codigo 
+
+``` c 
+#define prender(PORT, PIN) (PORT |= 1 << PIN)
+#define apagar(PORT, PIN) (PORT &= ~(1 << PIN))
+```
+- Y en esta parte estoy definiendo el prendido y apagado de cada led 
+
+``` C
+DDRD &= 0x0F;
+DDRB |= 0x0F;
+```

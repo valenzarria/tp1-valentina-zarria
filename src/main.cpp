@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <util/delay.h>
 
 #define bot1 ((PIND >> 4) & 0x01)
 #define bot2 ((PIND >> 5) & 0x01)
