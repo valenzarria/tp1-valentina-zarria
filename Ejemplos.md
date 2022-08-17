@@ -82,4 +82,4 @@ Puedes mencionar a una persona o equipo en GitHub al escribir @ más el nombre d
 Para escribir en color solo basta con usar comilla, por ejemplo `esto esta escrito en clor` 
 <span style="color:red">cardenales</span>
 <span style="color:red"></span>
-![Diagrama de Flujo]harri.png "trolo")
+![Diagrama de Flujo](harri.png)
