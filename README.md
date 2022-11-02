@@ -30,7 +30,10 @@ PB3 -> LED 4
 
 
 # INFORME:
-- Este programa está diseñado para prender y apagar `4 leds` mediante `4 botones`.
+
+- Este codigo esta programdo para prender y apagar 4 leds mediante 4 pulsadores 
+
+---
 
 ``` c
 #define bot1 ((PIND >> 4) & 0x01)
@@ -50,7 +53,7 @@ PB3 -> LED 4
 DDRD &= 0x0F;
 DDRB |= 0x0F;
 ``` 
-- en esta parte abri un while indicar que el codigo se repita infinitamente , y adentro del while abri 4 if para indicar que si el el boton de el puerto tal esta presionado el led numero tal esta encendido 
+- Aca condiguré mis pines como entrada y salida 
 
 ``` C
   while(1){
@@ -88,6 +91,7 @@ DDRB |= 0x0F;
     }
   }
   ```
+  - En esta parte abri un while indicar que el codigo se repita infinitamente , y adentro del while abri 4 if para indicar que si el el boton de el puerto tal esta presionado el led numero tal esta encendido
 
 # Diagrama de Flujo
 ![Diagrama de Flujo](Diagrama_Tp1.svg "Diagrama")
