@@ -17,20 +17,33 @@ int main(){
     {
       prender(PORTB,0);
     }
+    else{
+     apagar(PORTB,0);
+    }
 
     if (bot2==0)
     {
       prender(PORTB,1);
+    }
+    else{
+    apagar(PORTB,1);
+     
     }
 
     if (bot3==0)
     {
       prender(PORTB,2);
     }
+    else{
+    apagar(PORTB,2);
+    }
 
     if (bot4==0)
     {
       prender(PORTB,3);
+    }
+    else{
+    apagar(PORTB,3);
     }
   }
 }
