@@ -49,4 +49,45 @@ PB3 -> LED 4
 ``` C
 DDRD &= 0x0F;
 DDRB |= 0x0F;
-```
+``` 
+- en esta parte abri un while indicar que el codigo se repita infinitamente , y adentro del while abri 4 if para indicar que si el el boton de el puerto tal esta presionado el led numero tal esta encendido 
+
+``` C
+  while(1){
+    if (bot1==0)
+    {
+      prender(PORTB,0);
+    }
+    else{
+     apagar(PORTB,0);
+    }
+
+    if (bot2==0)
+    {
+      prender(PORTB,1);
+    }
+    else{
+    apagar(PORTB,1);
+     
+    }
+
+    if (bot3==0)
+    {
+      prender(PORTB,2);
+    }
+    else{
+    apagar(PORTB,2);
+    }
+
+    if (bot4==0)
+    {
+      prender(PORTB,3);
+    }
+    else{
+    apagar(PORTB,3);
+    }
+  }
+  ```
+
+# Diagrama de Flujo
+![Diagrama de Flujo](Diagrama TP1.svg "Diagrama")
