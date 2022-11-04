@@ -95,19 +95,3 @@ DDRB |= 0x0F;
 
 # Diagrama de Flujo
 ![Diagrama de Flujo](Diagrama_Tp1.svg "Diagrama")
-
-# Circuito
-![circuito](circuito.png "circuito")
-
-
-
-
-
-
-
-
-
-
-
-
-
